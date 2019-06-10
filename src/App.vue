@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
