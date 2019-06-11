@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <p>Current Time - {{ time }}</p>
+	<datetime type='datetime' format='MMMM d yyyy, HH:mm:ss' value-zone='UTC+4' zone='UTC+4' v-model='datetime'></datetime>
+	<p>Chosen Time - {{ this.datetime }}</p>
   </div>
 </template>
 
@@ -11,12 +13,13 @@ export default {
   name: 'app',
   data: function() {
     return {
-      time: ''
+	time: '',
+	datetime: ''
     }
   },
   beforeMount() {
     setInterval(() => {
-      this.time = moment().format('MMMM D YYYY, hh:mm:ss a')
+      this.time = moment().format('MMMM D YYYY, HH:mm:ss')
     }, 1000)
   }
 }
