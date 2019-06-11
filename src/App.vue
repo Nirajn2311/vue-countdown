@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>Current Time - {{ time }}</p>
   </div>
 </template>
 
@@ -7,7 +8,17 @@
 import moment from 'moment'
 
 export default {
-  name: 'app'
+  name: 'app',
+  data: function() {
+    return {
+      time: ''
+    }
+  },
+  beforeMount() {
+    setInterval(() => {
+      this.time = moment().format('MMMM D YYYY, hh:mm:ss a')
+    }, 1000)
+  }
 }
 </script>
 
