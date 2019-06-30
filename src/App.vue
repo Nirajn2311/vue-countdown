@@ -23,21 +23,14 @@ export default {
   },
   beforeMount() {
     setInterval(() => {
-	  this.time = moment().format('MMMM D YYYY, HH:mm:ss')
-	  this.datetime = moment(this.datetime).format('MMMM D YYYY, HH:mm:ss')
-	  this.remtime = moment().countdown(this.datetime).toString()
+      this.time = moment().format("MMMM D YYYY, HH:mm:ss");
+      this.datetime = localStorage.datetime != "Invalid date" ? localStorage.getItem("datetime") : moment(this.datetime).format("MMMM D YYYY, HH:mm:ss");
+      if (this.datetime) {
+		localStorage.setItem("remtime", moment().countdown(this.datetime).toString());
+		localStorage.setItem("datetime", this.datetime);
+	  }
+	  this.remtime = localStorage.getItem("remtime");
     }, 1000)
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
